@@ -19,6 +19,10 @@ When a problem comes along, you must print it! This 3D printable 45 RPM record a
 
 For complete documentation that will crack that whip, see [docs/README.md](docs/README.md)
 
+## See It Spin! 🎵
+
+https://github.com/jmcpheron/devo-energy-dome-45-adapter/raw/main/images/action-shot.mp4
+
 ## License
 
 This project is released under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). Share it freely, that's our duty!
