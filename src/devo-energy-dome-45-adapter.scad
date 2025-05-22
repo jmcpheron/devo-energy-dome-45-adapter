@@ -33,7 +33,7 @@ module devo_hat() {
 // Create the adapter and subtract the central post hole
 difference() {
   devo_hat();
-  // Subtract the post hole (and subtract 5mm so there is not a hole in the top)
+  // Subtract the post hole (and subtract 2mm so there is not a hole in the top)
   translate([0, 0, -1])
-    cylinder(d = post_diameter, h = total_height - 5);
+    cylinder(d = post_diameter, h = total_height - 2);
 }
