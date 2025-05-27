@@ -39,10 +39,6 @@ jobs:
         # Generate main STL file
         openscad -o models/output.stl src/devo-energy-dome-45-adapter.scad
         
-        # Generate alternative sizes if needed
-        openscad -D 'base_diameter=32.3' -o models/devo-energy-dome-45-adapter_85.stl src/devo-energy-dome-45-adapter.scad
-        openscad -D 'base_diameter=36.1' -o models/devo-energy-dome-45-adapter_95.stl src/devo-energy-dome-45-adapter.scad
-        
     - name: Verify STL files were created
       run: |
         ls -la models/

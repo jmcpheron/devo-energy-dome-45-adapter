@@ -7,7 +7,7 @@
 
 ## Automated Workflow
 - STL files are automatically generated via GitHub Actions when `.scad` files change
-- Generated files: `models/output.stl`, plus variant sizes at 85% and 95% scale
+- Generated file: `models/output.stl`
 - Workflow triggers on push/PR to main branch when `src/**/*.scad` files are modified
 - Generated STL files are committed back to the repository automatically
 

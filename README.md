@@ -6,18 +6,34 @@ When a problem comes along, you must print it! This 3D printable 45 RPM record a
 
 ## Whip It Into Shape (Quick Start)
 
-1. Download the STL file from the `models` directory
-2. Print it good! (PLA or PETG recommended)
+1. Download `models/output.stl` or any STL file from the `models` directory
+2. Print it good! (PLA or PETG recommended, 0.16mm layer height)
 3. Freedom of choice - place it on your turntable spindle to play those sweet 45 RPM singles
+
+## Automated De-Evolution 🤖
+
+This project features **automated STL generation** via GitHub Actions:
+- When OpenSCAD source files (`.scad`) are modified, fresh STL files are automatically compiled
+- Generated `models/output.stl` is committed back to the repository 
+- No need to manually run OpenSCAD - the workflow handles it all!
 
 ## Through Being Cool (Repository Contents)
 
-- `src/` - OpenSCAD source file (for when you want to get satisfaction)
-- `models/` - Ready-to-print 3D model files (STL, 3MF)
+- `src/` - OpenSCAD source file with parametric design (for when you want to get satisfaction)
+- `models/` - Auto-generated ready-to-print 3D model files (STL, 3MF)
 - `images/` - Beautiful mutants (photos and video of the adapter)
 - `docs/` - For when you need to read the directions... RTFM!
+- `.github/workflows/` - Automated compilation pipeline
 
 For complete documentation that will crack that whip, see [docs/README.md](docs/README.md)
+
+## Design Features
+
+- **Stepped dome design** with 4 tapered layers that shrink and slant inward
+- **38mm base diameter** - perfect fit for 45 RPM records
+- **7.5mm center hole** - compatible with standard turntable spindles
+- **High-resolution curves** ($fn = 300) for smooth surfaces
+- **Parametric design** - easily customizable via OpenSCAD variables
 
 ## See It Spin! 🎵
 
