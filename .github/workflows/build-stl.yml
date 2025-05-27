@@ -1,0 +1,68 @@
+name: Build STL Models
+
+on:
+  push:
+    paths:
+      - 'src/**/*.scad'
+      - '.github/workflows/build-stl.yml'
+  pull_request:
+    paths:
+      - 'src/**/*.scad'
+      - '.github/workflows/build-stl.yml'
+
+jobs:
+  build-stl:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Install OpenSCAD
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y openscad
+        
+    - name: Verify OpenSCAD installation
+      run: openscad --version
+      
+    - name: Generate STL files
+      run: |
+        # Create output directory if it doesn't exist
+        mkdir -p models
+        
+        # Generate main STL file
+        openscad -o models/output.stl src/devo-energy-dome-45-adapter.scad
+        
+        # Generate alternative sizes if needed
+        openscad -D 'base_diameter=32.3' -o models/devo-energy-dome-45-adapter_85.stl src/devo-energy-dome-45-adapter.scad
+        openscad -D 'base_diameter=36.1' -o models/devo-energy-dome-45-adapter_95.stl src/devo-energy-dome-45-adapter.scad
+        
+    - name: Verify STL files were created
+      run: |
+        ls -la models/
+        file models/output.stl
+        
+    - name: Upload STL artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: stl-models
+        path: models/*.stl
+        retention-days: 30
+        
+    - name: Commit updated STL files
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add models/*.stl
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "🤖 Auto-generate STL files from OpenSCAD source
+
+          Generated with GitHub Actions
+          
+          Co-Authored-By: GitHub Actions <action@github.com>"
+          git push
+        fi

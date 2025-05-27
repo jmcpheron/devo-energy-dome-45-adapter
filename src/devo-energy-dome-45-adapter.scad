@@ -4,6 +4,8 @@
    - Base diameter: 38 mm (to match the 45 adapter size)
    - Stepped dome: built with 4 tapered cylinders that shrink and slant inward
    - Central hole: about 7.5 mm diameter for the turntable post
+   
+   Auto-compilation: STL files are automatically generated via GitHub Actions
 */
 
 // Set the resolution for smoother circles

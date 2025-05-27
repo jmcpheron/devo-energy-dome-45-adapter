@@ -5,6 +5,12 @@
 - Preview in OpenSCAD: OpenSCAD src/devo-energy-dome-45-adapter.scad
 - Validate STL: stl-validator models/devo-energy-dome-45-adapter.stl
 
+## Automated Workflow
+- STL files are automatically generated via GitHub Actions when `.scad` files change
+- Generated files: `models/output.stl`, plus variant sizes at 85% and 95% scale
+- Workflow triggers on push/PR to main branch when `src/**/*.scad` files are modified
+- Generated STL files are committed back to the repository automatically
+
 ## Code Style Guidelines
 - Parameter naming: snake_case (e.g., base_diameter, post_diameter)
 - Comments: Include parameter explanations and section divisions
