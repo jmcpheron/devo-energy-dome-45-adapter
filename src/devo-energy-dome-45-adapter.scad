@@ -17,7 +17,7 @@ post_diameter = 7.5;     // mm: diameter of the turntable post hole
 step_count = 4;          // Number of steps (layers)
 total_height = 18;       // Total height of the adapter (mm)
 reduction_per_step = 6;  // Reduction in diameter per step (mm)
-taper_factor = 0.8;      // How much each step tapers inward (0.8 = 20% taper)
+taper_factor = 1.05;      // How much each step tapers inward (0.8 = 20% taper)
 
 step_height = total_height / step_count;
 
