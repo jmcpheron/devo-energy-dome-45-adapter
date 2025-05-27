@@ -37,7 +37,7 @@ jobs:
         mkdir -p models
         
         # Generate main STL file
-        openscad -o models/output.stl src/devo-energy-dome-45-adapter.scad
+        openscad -o models/devo-energy-dome-45-adapter.stl src/devo-energy-dome-45-adapter.scad
         
     - name: Verify STL files were created
       run: |
