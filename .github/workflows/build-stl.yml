@@ -13,8 +13,6 @@ on:
 jobs:
   build-stl:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     
     steps:
     - name: Checkout repository
@@ -67,3 +65,5 @@ jobs:
           Co-Authored-By: GitHub Actions <action@github.com>"
           git push
         fi
+      permissions:
+        contents: write
