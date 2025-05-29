@@ -13,8 +13,6 @@ on:
 jobs:
   build-stl:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     
     steps:
     - name: Checkout repository
@@ -45,7 +43,7 @@ jobs:
     - name: Verify STL files were created
       run: |
         ls -la models/
-        file models/devo-energy-dome-45-adapter.stl
+        file models/*.stl
         
     - name: Upload STL artifacts
       uses: actions/upload-artifact@v4
@@ -70,3 +68,5 @@ jobs:
           Co-Authored-By: GitHub Actions <action@github.com>"
           git push
         fi
+      permissions:
+        contents: write
