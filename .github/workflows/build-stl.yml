@@ -13,6 +13,8 @@ on:
 jobs:
   build-stl:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - name: Checkout repository
@@ -34,13 +36,16 @@ jobs:
         # Create output directory if it doesn't exist
         mkdir -p models
         
-        # Generate main STL file
-        openscad -o models/devo-energy-dome-45-adapter.stl src/devo-energy-dome-45-adapter.scad
+        # Generate STL files for all .scad files in src/
+        for scad in src/*.scad; do
+          base=$(basename "$scad" .scad)
+          openscad -o "models/$base.stl" "$scad"
+        done
         
     - name: Verify STL files were created
       run: |
         ls -la models/
-        file models/devo-energy-dome-45-adapter.stl
+        file models/*.stl
         
     - name: Upload STL artifacts
       uses: actions/upload-artifact@v4
@@ -65,5 +70,3 @@ jobs:
           Co-Authored-By: GitHub Actions <action@github.com>"
           git push
         fi
-      permissions:
-        contents: write
