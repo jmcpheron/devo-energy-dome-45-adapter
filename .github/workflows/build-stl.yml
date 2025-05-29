@@ -42,7 +42,7 @@ jobs:
     - name: Verify STL files were created
       run: |
         ls -la models/
-        file models/output.stl
+        file models/devo-energy-dome-45-adapter.stl
         
     - name: Upload STL artifacts
       uses: actions/upload-artifact@v4
