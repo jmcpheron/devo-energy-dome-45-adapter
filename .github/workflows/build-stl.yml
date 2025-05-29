@@ -36,13 +36,16 @@ jobs:
         # Create output directory if it doesn't exist
         mkdir -p models
         
-        # Generate main STL file
-        openscad -o models/devo-energy-dome-45-adapter.stl src/devo-energy-dome-45-adapter.scad
+        # Generate STL files for all .scad files in src/
+        for scad in src/*.scad; do
+          base=$(basename "$scad" .scad)
+          openscad -o "models/$base.stl" "$scad"
+        done
         
     - name: Verify STL files were created
       run: |
         ls -la models/
-        file models/output.stl
+        file models/devo-energy-dome-45-adapter.stl
         
     - name: Upload STL artifacts
       uses: actions/upload-artifact@v4
